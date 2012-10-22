@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+    <!--
+    Extrae el log del servidor y lo almacena en arcivos separados por dia
+    yyyy-MM-ww          : Por semana
+    yyyy-MM-dd          : Por dia
+    yyyy-MM-dd_HH       : Por hora
+    yyyy-MM-dd_HH-mm    : Por minuto
+    -->
+ 
+    <!--        Habilita la salida estadandar via consola    -->
+    
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss.SSS} | %-5level | %logger{36} - %msg %n</Pattern>
+        </layout>
+    </appender>
+
+    <!--
+            Levels:
+                TRACE, DEBUG, INFO, WARN, ERROR, ALL or OFF.
+    	         Note that the level of the root logger cannot be set to INHERITED or NULL.
+		<logger name=".*" level="debug"/>
+        -->
+
+    <!-- <logger level="debug" name="com.oz.atm" />-->
+
+
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

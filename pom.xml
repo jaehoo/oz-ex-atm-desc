@@ -154,5 +154,20 @@
           <version>${mysql.version}</version>
       </dependency>
 
+      <!-- Connection Pools -->
+      <!-- C3po -->
+      <dependency>
+          <groupId>c3p0</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>${c3po.version}</version>
+      </dependency>
+
+      <!-- Apache Connection Pool -->
+      <dependency>
+          <groupId>commons-dbcp</groupId>
+          <artifactId>commons-dbcp</artifactId>
+          <version>1.4</version>
+      </dependency>
+
   </dependencies>
 </project>

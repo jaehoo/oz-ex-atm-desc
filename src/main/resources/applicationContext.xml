@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util
+                http://www.springframework.org/schema/util/spring-util.xsd
+                http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/jee
+		http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+    <!-- Spring Hibernate config -->
+    
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory"/>
+    
+    <!-- Adm de transacciones-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+          p:configurationClass="org.hibernate.cfg.AnnotationConfiguration"
+          p:configLocation="classpath:hibernate.cfg.xml"
+          p:dataSource-ref="ds.cp.c3p0"/>
+    
+    
+    <!-- C3p0 DS  work with HSQLDB-->
+    <bean id="ds.cp.c3p0"
+          lazy-init="true"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close"
+          p:driverClass="com.mysql.jdbc.Driver"
+          p:user="root"
+          p:password="root"
+          p:jdbcUrl="jdbc:mysql://localhost:3306/OZ_TEST"
+          p:acquireIncrement="5"
+          p:idleConnectionTestPeriod="60"
+          p:maxPoolSize="100"
+          p:minPoolSize="10"
+          p:maxStatements="50"/>
+
+    <!-- Apache DS -->
+    <bean id="ds.cp.dbcp"
+          lazy-init="true"
+          class="org.apache.commons.dbcp.BasicDataSource"
+          p:driverClassName="com.mysql.jdbc.Driver"
+          p:username="root"
+          p:password="root"
+          p:url="jdbc:mysql://localhost:3306/OZ_TEST"
+          p:initialSize="5"
+          p:maxActive="5"
+          p:maxIdle="5"
+          p:defaultAutoCommit="false"
+          p:defaultTransactionIsolation="2"
+          p:validationQuery="select 1"
+          p:testOnBorrow="true"/>
+    
+</beans>

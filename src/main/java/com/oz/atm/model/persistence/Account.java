@@ -1,4 +1,4 @@
-package com.oz.atm.model;
+package com.oz.atm.model.persistence;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +13,7 @@ public class Account implements Serializable{
 
     @Id
     @Column(name = "id_account")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getIdAccount() {
         return idAccount;
     }
@@ -33,6 +34,7 @@ public class Account implements Serializable{
     private Customer customer;
 
     @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "id_customer", nullable = false)
     public Customer getCustomer() {
         return customer;
     }

@@ -1,4 +1,4 @@
-package com.oz.atm.model;
+package com.oz.atm.model.persistence;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +14,7 @@ public class Customer implements Serializable{
 
     @Id
     @Column(name = "id_customer")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getIdCustomer() {
         return idCustomer;
     }

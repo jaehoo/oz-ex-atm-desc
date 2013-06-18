@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="MySQL" version="5.6.10-log" jdbc-version="3.0" driver-name="MySQL-AB JDBC Driver" driver-version="mysql-connector-java-5.1.10 ( Revision: ${svn.Revision} )" uuid="6a9828c2-5cce-4660-80f3-6a25b2f3ce59">
+    <extra-name-characters>#@</extra-name-characters>
+    <identifier-quote-string>`</identifier-quote-string>
+    <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+    <jdbc-url>jdbc:mysql://10.13.8.65:3306/OZ_TEST</jdbc-url>
+    <user-name>beto</user-name>
+    <user-password>dfc8dfcfdfdedfc5</user-password>
+    <schema-pattern>oz_test.*</schema-pattern>
+    <libraries>
+      <library>
+        <url>jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.10/mysql-connector-java-5.1.10.jar!/</url>
+      </library>
+    </libraries>
+    <table name="account" schema="" catalog="oz_test" type="TABLE">
+      <column name="id_account" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true" />
+      <column name="balance" sqlType="DOUBLE" length="22" precision="0" nullable="false" jdbcType="8" />
+      <column name="id_customer" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <primary-key name="PRIMARY" columns="id_account" />
+      <foreign-key name="fk_ACCOUNT_CLIENTE" columns="id_customer" ref-table="customer" ref-schema="" ref-catalog="oz_test" ref-columns="id_customer" update-rule="3" delete-rule="3" deferrability="2" />
+    </table>
+    <table name="customer" schema="" catalog="oz_test" type="TABLE">
+      <column name="id_customer" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" />
+      <column name="name" sqlType="VARCHAR" length="45" precision="0" nullable="false" jdbcType="12" />
+      <primary-key name="PRIMARY" columns="id_customer" />
+    </table>
+  </data-source>
+</component>

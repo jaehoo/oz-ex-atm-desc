@@ -1,0 +1,4 @@
+/*C3*/SET SCHEMA PUBLIC
+create table ACCOUNT (id_account integer not null, balance double, customer_id_customer integer, primary key (id_account))
+create table CUSTOMER (id_customer integer not null, name varchar(255), primary key (id_customer))
+alter table ACCOUNT add constraint FKE49F160D9CBFF6BD foreign key (customer_id_customer) references CUSTOMER

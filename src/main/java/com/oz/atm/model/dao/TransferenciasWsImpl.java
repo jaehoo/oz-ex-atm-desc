@@ -1,4 +1,4 @@
-package tmp;
+package com.oz.atm.model.dao;
 
 /**
  * Created with IntelliJ IDEA.

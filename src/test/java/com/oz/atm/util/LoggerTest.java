@@ -39,7 +39,7 @@ public class LoggerTest extends AbstractTest {
 
         SessionFactory sf= (SessionFactory) applicationContext.getBean("sessionFactory");
 
-        List result = sf.getCurrentSession().createSQLQuery("show tables").list();
+        List result = sf.getCurrentSession().createSQLQuery("select * from CUSTOMER").list();
         
         logger.info("Resultado:{}", result);
         

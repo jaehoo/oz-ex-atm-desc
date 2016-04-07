@@ -6,6 +6,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ACCOUNT")
 @org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@SequenceGenerator(name = "SQ_ACCOUNT", sequenceName = "SQ_ACCOUNT") // for Oracle
 public class Account implements Serializable{
 
     private Integer idAccount;
@@ -13,7 +14,8 @@ public class Account implements Serializable{
 
     @Id
     @Column(name = "id_account")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SQ_ACCOUNT")
     public Integer getIdAccount() {
         return idAccount;
     }

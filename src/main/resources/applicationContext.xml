@@ -6,7 +6,7 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/util
@@ -16,7 +16,7 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/jee
-       http://www.springframework.org/schema/jee/spring-jee.xsd">
+       http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- Spring Hibernate config -->
 
@@ -33,15 +33,18 @@
           p:configLocation="classpath:hibernate.cfg.xml"
           p:dataSource-ref="ds.cp.c3p0"/>
 
+
+    <!-- Data Source -->
+
     <!-- C3p0 DS  work with HSQLDB-->
     <bean id="ds.cp.c3p0"
           lazy-init="true"
           class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
-          p:driverClass="com.mysql.jdbc.Driver"
-          p:user="root"
-          p:password="root"
-          p:jdbcUrl="jdbc:mysql://localhost:3306/OZ_TEST"
+          p:driverClass="org.h2.Driver"
+          p:user="sa"
+          p:password=""
+          p:jdbcUrl="jdbc:h2:mem:mymemdb;MODE=ORACLE;DB_CLOSE_DELAY=-1;LOCK_MODE=0;TRACE_LEVEL_FILE=0;TRACE_LEVEL_SYSTEM_OUT=0;DB_CLOSE_ON_EXIT=FALSE"
           p:acquireIncrement="5"
           p:idleConnectionTestPeriod="60"
           p:maxPoolSize="100"
@@ -49,24 +52,30 @@
           p:maxStatements="50"/>
 
     <!-- Apache DS -->
-    <bean id="ds.cp.dbcp"
-          lazy-init="true"
-          class="org.apache.commons.dbcp.BasicDataSource"
-          p:driverClassName="com.mysql.jdbc.Driver"
-          p:username="root"
-          p:password="root"
-          p:url="jdbc:mysql://localhost:3306/OZ_TEST"
-          p:initialSize="5"
-          p:maxActive="5"
-          p:maxIdle="5"
-          p:defaultAutoCommit="false"
-          p:defaultTransactionIsolation="2"
-          p:validationQuery="select 1"
-          p:testOnBorrow="true"/>
+    <!--<bean id="ds.cp.dbcp"-->
+          <!--lazy-init="true"-->
+          <!--class="org.apache.commons.dbcp.BasicDataSource"-->
+          <!--p:driverClassName="org.h2.Driver"-->
+          <!--p:username="sa"-->
+          <!--p:password=""-->
+          <!--p:url="jdbc:h2:mem:mymemdb;MODE=ORACLE;DB_CLOSE_DELAY=-1;LOCK_MODE=0;TRACE_LEVEL_FILE=0;TRACE_LEVEL_SYSTEM_OUT=0"-->
+          <!--p:initialSize="5"-->
+          <!--p:maxActive="5"-->
+          <!--p:maxIdle="5"-->
+          <!--p:defaultAutoCommit="false"-->
+          <!--p:defaultTransactionIsolation="2"-->
+          <!--p:validationQuery="select 1"-->
+          <!--p:testOnBorrow="true"/>-->
+
+    <!--  DAO -->
 
     <bean name="absDao" class="com.oz.atm.model.dao.AbstractDao" p:sf-ref="sessionFactory"/>
     <bean parent="absDao" name="retirosDao" class="com.oz.atm.model.dao.RetirosImpl" />
     <bean parent="absDao" name="trasferenciasDao" class="com.oz.atm.model.dao.TransferenciasImpl" />
+
+
+
+    <!-- Services -->
 
     <bean id="cajeroBancario"
           class="com.oz.atm.service.CajeroBancario"
@@ -78,5 +87,9 @@
           class="com.oz.atm.gui.CajeroSwing"
           p:cajero-ref="cajeroBancario"/>
 
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:db/sql/dataset.sql" />
+        <!-- <jdbc:script location="classpath:db/sql/insert-data.sql" />-->
+    </jdbc:embedded-database>
 
 </beans>

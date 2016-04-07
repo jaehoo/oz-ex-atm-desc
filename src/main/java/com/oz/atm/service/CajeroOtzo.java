@@ -1,4 +1,7 @@
-package tmp;
+package com.oz.atm.service;
+
+import com.oz.atm.model.dao.Retiros;
+import com.oz.atm.model.dao.Transferencias;
 
 /**
  * Created with IntelliJ IDEA.

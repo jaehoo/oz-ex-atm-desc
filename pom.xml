@@ -1,209 +1,346 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.oz</groupId>
-  <artifactId>atm</artifactId>
-  <version>2.0</version>
-  <packaging>jar</packaging>
+    <groupId>com.oz</groupId>
+    <artifactId>atm</artifactId>
+    <version>2.0</version>
+    <packaging>jar</packaging>
 
-  <name>atm</name>
-  <url>http://maven.apache.org</url>
+    <name>atm</name>
+    <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-      <!--  Loggers -->
-      <slf4j.version>1.6.1</slf4j.version>
-      <logback.version>1.0.6</logback.version>
+        <company.name>Orbital Zero</company.name>
+        <company.website>http://www.orbitalzero.com</company.website>
 
-      <!-- Testing -->
-      <junit.version>4.9</junit.version>
-      <c3po.version>0.9.1.2</c3po.version>
-      <commons-dbcp.version>1.4</commons-dbcp.version>
+        <javadoc.copyright>
+            <![CDATA[ Copyright &#169; {inceptionYear}-{currentYear} <a href="${company.website}">${company.name}, Inc. </a>All Rights Reserved.]]>
+        </javadoc.copyright>
 
-      <!-- Spring, Hibernate -->
-      <spring.framework.version>3.1.1.RELEASE</spring.framework.version>
-      <springframework.version>3.0.2.RELEASE</springframework.version>
+        <!--  Loggers -->
+        <slf4j.version>1.6.1</slf4j.version>
+        <logback.version>1.0.6</logback.version>
 
-      <hibernate.version>3.6.10.Final</hibernate.version>
+        <!-- Testing -->
+        <junit.version>4.9</junit.version>
+        <c3po.version>0.9.1.2</c3po.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
 
-      <!-- JDBC Drivers -->
-      <hsqldb.version>2.2.8</hsqldb.version>
-      <mysql.version>5.1.10</mysql.version>
+        <!-- Spring, Hibernate -->
+        <spring.framework.version>3.1.1.RELEASE</spring.framework.version>
+        <springframework.version>3.0.2.RELEASE</springframework.version>
+
+        <hibernate.version>3.6.10.Final</hibernate.version>
+
+        <!-- JDBC Drivers -->
+        <hsqldb.version>2.2.8</hsqldb.version>
+        <mysql.version>5.1.10</mysql.version>
 
         <!--  Plugins or utils  -->
 
-      <commons-lang.version>2.6</commons-lang.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <jacoco.version>0.7.2.201409121644</jacoco.version>
+        <javadoc.basedir>${project.basedir}/src/site/javadoc/</javadoc.basedir>
 
-  </properties>
+    </properties>
 
-  <dependencies>
+    <dependencies>
 
-      <!-- Loggers -->
+        <!-- Loggers -->
 
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-api</artifactId>
-          <version>${slf4j.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
 
-      <dependency>
-          <groupId>org.slf4j</groupId>
-          <artifactId>jcl-over-slf4j</artifactId>
-          <version>${slf4j.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
 
-      <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-classic</artifactId>
-          <version>${logback.version}</version>
-          <exclusions>
-              <exclusion>
-                  <artifactId>slf4j-api</artifactId>
-                  <groupId>org.slf4j</groupId>
-              </exclusion>
-          </exclusions>
-      </dependency>
-      <dependency>
-          <groupId>ch.qos.logback</groupId>
-          <artifactId>logback-core</artifactId>
-          <version>${logback.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
 
-      <!-- Testing -->
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>${junit.version}</version>
-          <scope>test</scope>
-      </dependency>
+        <!-- Testing -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-test</artifactId>
-          <version>${spring.framework.version}</version>
-          <scope>test</scope>
-      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.framework.version}</version>
+            <scope>test</scope>
+        </dependency>
 
 
-      <!-- Spirng Framework-->
+        <!-- Spirng Framework-->
 
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-          <version>${spring.framework.version}</version>
-          <exclusions>
-              <exclusion>
-                  <artifactId>commons-logging</artifactId>
-                  <groupId>commons-logging</groupId>
-              </exclusion>
-          </exclusions>
-      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.framework.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-      <!-- Spring ORM -->
+        <!-- Spring ORM -->
 
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-tx</artifactId>
-          <version>${spring.framework.version}</version>
-      </dependency>
-      <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-orm</artifactId>
-          <version>${spring.framework.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.framework.version}</version>
+        </dependency>
 
-      <!-- Hibernate -->
+        <!-- Hibernate -->
 
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-core</artifactId>
-          <version>${hibernate.version}</version>
-          <exclusions>
-              <exclusion>
-                  <artifactId>slf4j-api</artifactId>
-                  <groupId>org.slf4j</groupId>
-              </exclusion>
-          </exclusions>
-      </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-      <!-- Hibernate JPA-->
-      <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-          <version>1.0</version>
-      </dependency>
-      <dependency>
-          <groupId>javax.transaction</groupId>
-          <artifactId>jta</artifactId>
-          <version>1.1</version>
-          <type>jar</type>
-          <scope>compile</scope>
-      </dependency>
-      <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-entitymanager</artifactId>
-          <version>${hibernate.version}</version>
-      </dependency>
+        <!-- Hibernate JPA-->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 
-      <!-- JDBC Connector's-->
+        <!-- JDBC Connector's-->
 
-      <dependency>
-          <groupId>mysql</groupId>
-          <artifactId>mysql-connector-java</artifactId>
-          <version>${mysql.version}</version>
-      </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
 
-      <dependency>
+        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
             <scope>test</scope>
         </dependency>
 
-      <!-- Connection Pools -->
-      <!-- C3po -->
-      <dependency>
-          <groupId>c3p0</groupId>
-          <artifactId>c3p0</artifactId>
-          <version>${c3po.version}</version>
-      </dependency>
+        <!-- Connection Pools -->
+        <!-- C3po -->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3po.version}</version>
+        </dependency>
 
-      <!-- Apache Connection Pool -->
-      <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>com.h2database</groupId>
-          <artifactId>h2</artifactId>
-          <version>1.3.165</version>
-      </dependency>
-
-
-  </dependencies>
+        <!-- Apache Connection Pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.3.165</version>
+        </dependency>
 
 
-  <build>
-      <plugins>
+    </dependencies>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <plugins>
+            <!-- Plugin para generar el site con los reports -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+                <!-- <reportSets>
+                     <reportSet>
+                         <reports>
+                             <report>summary</report>
+                             <report>index</report>
+                             <report>dependencies</report>
+                             <report>project-team</report>
+                             <report>license</report>
+                             <report>scm</report>
+                             <report>cim</report>
+                             <report>mailing-list</report>
+                             <report>issue-tracking</report>
+                         </reports>
+                     </reportSet>
+                 </reportSets>-->
+            </plugin>
+            <!-- Reporte tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.18.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.2.201409121644</version>
+            </plugin>
+            <!-- More report plugins place here (PMD, checkstyle...) -->
 
 
+
+
+
+        </plugins>
+
+
+
+    </reporting>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+
+                <version>2.8.1</version>
+                <inherited>false</inherited>
+                <configuration>
+                    <docencoding>UTF-8</docencoding>
+                    <docfilessubdirs>true</docfilessubdirs>
+                    <bottom>${javadoc.copyright}</bottom>
+
+                    <stylesheetfile>${project.basedir}/src/site/javadoc/stylesheet.css</stylesheetfile>
+                    <javadocDirectory>${project.basedir}/src/site/javadoc</javadocDirectory>
+                    <docfilessubdirs>true</docfilessubdirs>
+                </configuration>
+
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <inherited>false</inherited>
+                <version>3.3</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
                 <configuration>
+                    <!--<meminitial>768M</meminitial>-->
+                    <!--<maxmem>1024M</maxmem>-->
                     <source>1.6</source>
                     <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                    <!--<excludes>
-                        <exclude>docs/*</exclude>
-                        <exclude>config/*</exclude>
-                    </excludes>-->
+                    <encoding>${project.build.sourceEncoding}</encoding>
+
                 </configuration>
             </plugin>
+
+
+
+            <!-- JACOCO -->
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>agent</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <!-- Generate coverage report html in target/site/jacoco/ from target/jacoco.exec -->
+                        <id>report</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <argLine> -Xms256m -Xmx512m -Djavax.xml.parsers.DocumentBuilderFactory=com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl -Djavax.xml.parsers.SAXParserFactory=com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl ${surefireArgLine}</argLine>
+                </configuration>
+            </plugin>
+
+            <!-- END JACOCO -->
+
         </plugins>
-  </build>
+    </build>
 </project>
 

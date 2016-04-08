@@ -1,0 +1,22 @@
+/*
+#banner, #banner td {
+    color: #fff;
+    position: relative;
+    width: 100%;
+    background-image: url("../images/bg.gif");
+}
+
+h2 {
+    background-color: #5587B7;
+}
+*/
+
+#bannerLeft img {
+    z-order: 100;
+    /*width: 196px;
+    height: 100px;*/
+    /*margin-bottom: 10px;
+    margin-left: 5px;*/
+}
+
+

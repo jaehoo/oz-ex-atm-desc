@@ -327,6 +327,12 @@
                     </execution>
                 </executions>
 
+                <configuration>
+                    <excludes>
+                        <!--<exclude>com/oz/atm/gui/**/*</exclude>-->
+                        <exclude>com/oz/atm/gui/**/*.class</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
 
             <plugin>

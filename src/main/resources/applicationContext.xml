@@ -85,7 +85,8 @@
 
     <bean id="cajeroSwing"
           class="com.oz.atm.gui.CajeroSwing"
-          p:cajero-ref="cajeroBancario"/>
+          p:cajero-ref="cajeroBancario"
+            lazy-init="true"/>
 
     <jdbc:embedded-database id="dataSource" type="H2">
         <jdbc:script location="classpath:db/sql/dataset.sql" />

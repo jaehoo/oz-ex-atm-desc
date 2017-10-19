@@ -1,7 +1,13 @@
 ---
+after_success:
+  - "mvn coveralls:report"
+install:
+  - "mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 jdk:
   - openjdk8
 language: java
 notifications:
   email:
     - jaehoo@gmail.com
+script:
+  - "mvn test jacoco:report"

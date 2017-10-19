@@ -28,7 +28,7 @@
     <!-- <logger level="debug" name="com.oz.atm" />-->
 
 
-    <root level="info">
+    <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>
 

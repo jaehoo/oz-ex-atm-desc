@@ -1,6 +1,6 @@
 ---
 after_success:
-  - "mvn coveralls:report"
+  - "mvn coveralls:report org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.exclusions=src/java/test/**,com/oz/atm/gui/*.class,com/oz/atm/gui/*,com/oz/atm/gui/*.java -Dsonar.coverage.exclusions=com/oz/atm/gui/*.class,com/oz/atm/gui/*,com/oz/atm/gui/*.java -Dsonar.java.binaries=target/classes"
 install:
   - "mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 jdk:

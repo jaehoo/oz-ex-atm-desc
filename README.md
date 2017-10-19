@@ -1,7 +1,7 @@
-# ATM Java Project
 [![Build Status](https://travis-ci.org/jaehoo/oz-ex-atm-desc.svg?branch=master)](https://travis-ci.org/jaehoo/oz-ex-atm-desc) [![Coverage Status](https://coveralls.io/repos/github/jaehoo/oz-ex-atm-desc/badge.svg?branch=master)](https://coveralls.io/github/jaehoo/oz-ex-atm-desc?branch=master)
 [Sonarqube Analyze Report](https://sonarcloud.io/dashboard?id=com.oz%3Aatm)
-___
+
+# ATM Java Project
 
 ### Description
 This project is an example to show you some basic concepts of the java development, how to use DAO pattern using Spring and hiberante, testing with junit. The principal topics are:

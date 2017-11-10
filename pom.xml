@@ -43,7 +43,7 @@
         <!--  Plugins or utils  -->
 
         <commons-lang.version>2.6</commons-lang.version>
-        <jacoco.version>0.7.2.201409121644</jacoco.version>
+        <jacoco.version>0.7.4.201502262128</jacoco.version>
         <javadoc.basedir>${project.basedir}/src/site/javadoc/</javadoc.basedir>
 
     </properties>
@@ -232,7 +232,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.2.201409121644</version>
+                <version>${jacoco.version}</version>
             </plugin>
             <!-- More report plugins place here (PMD, checkstyle...) -->
 
@@ -325,7 +325,7 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
-                </executions>
+                </executions>   
 
                 <configuration>
                     <excludes>

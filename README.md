@@ -4,25 +4,25 @@
 # ATM Java Project
 
 ### Description
-This project is an example to show you some basic concepts of the java development, how to use DAO pattern using Spring and hiberante, testing with junit. The principal topics are:
+This project is an example to show you some basic concepts of the java development, how to use DAO pattern using Spring and hiberante and testing with JUnit. The principal topics are:
 
  - IoC (Inversion Of Control)
  - High Cohesion
  - Low Coupling
  - Polymorphism
 
-And this includes the JaCoCo test Report, aditionally the project is configured to use cloud services with Travis CI for integration and Coverrals for coverage reports.
+And this includes the JaCoCo test Report, aditionally the project is configured to use cloud services with Travis CI for integration and Coveralls for coverage reports.
 
 ## Project requirements:
 
 - Java 1.8
 - Apache Maven > 3.0
 
-What we're to build?
+**What we're to build?**
 
 A simple Java application with swing gui, if you want to read full description you can visit my [Personal Blog](https://jaehoo.wordpress.com/2013/06/20/oz-ejemplo-cajero-atm/)
 
-But in sumary we're build an aplication to simulate ATM funcionality with two operations (withdraw and transfers):
+But in summary we're build an aplication to simulate ATM funcionality with two operations (withdraw and transfers):
 
 ![use case](https://lh5.googleusercontent.com/-jfHXGVs5r_A/UIRiCG0EH8I/AAAAAAAACrA/mf3pD3spXdE/s400/Diagramadecasodeuso.png)
 

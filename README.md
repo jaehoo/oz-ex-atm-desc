@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f744713b2a774b7088a5acfc4f39cf5a)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/jaehoo/oz-ex-atm-desc.svg?branch=master)](https://travis-ci.org/jaehoo/oz-ex-atm-desc) [![Coverage Status](https://coveralls.io/repos/github/jaehoo/oz-ex-atm-desc/badge.svg?branch=master)](https://coveralls.io/github/jaehoo/oz-ex-atm-desc?branch=master)
 [Sonarqube Analyze Report](https://sonarcloud.io/dashboard?id=com.oz%3Aatm)
 

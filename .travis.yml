@@ -4,7 +4,7 @@ before_install:
   - "wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)"
 after_success:
   - "mvn coveralls:report org.jacoco:jacoco-maven-plugin:prepare-agent sonar:sonar -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.organization=$SONAR_ORG -Dsonar.login=$SONAR_TOKEN -Dsonar.exclusions=src/java/test/**,com/oz/atm/gui/*.class,com/oz/atm/gui/*,com/oz/atm/gui/*.java -Dsonar.coverage.exclusions=com/oz/atm/gui/*.class,com/oz/atm/gui/*,com/oz/atm/gui/*.java -Dsonar.java.binaries=target/classes"
-  - "java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r build/reports/jacoco/test/jacocoTestReport.xml"
+  - "java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter -l Java -r target/site/jacoco/jacoco.xml"
 install:
   - "mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 jdk:

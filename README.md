@@ -1,13 +1,7 @@
 
-[![Build Status](https://travis-ci.org/jaehoo/oz-ex-atm-desc.svg?branch=master)](https://travis-ci.org/jaehoo/oz-ex-atm-desc) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.oz:atm)](https://sonarcloud.io/dashboard/index/com.oz:atm)
+[![Build Status](https://travis-ci.org/jaehoo/oz-ex-atm-desc.svg?branch=master)](https://travis-ci.org/jaehoo/oz-ex-atm-desc) [![Quality Gate](https://sonarcloud.io/api/badges/gate?key=com.oz:atm)](https://sonarcloud.io/dashboard/index/com.oz:atm) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f744713b2a774b7088a5acfc4f39cf5a)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=badger)
 
-###### Quality metrics
----
-[![Coverage Status](https://coveralls.io/repos/github/jaehoo/oz-ex-atm-desc/badge.svg?branch=master)](https://coveralls.io/github/jaehoo/oz-ex-atm-desc?branch=master)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Coverage/5e86bf7ea8034fefbb9f845d01f955ba)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=Badge_Coverage) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f744713b2a774b7088a5acfc4f39cf5a)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=badger)
-
-[![SonarCloud Coverage](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=com.oz%3Aatm) [![SonarCloud Bugs](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=com.oz%3Aatm) [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/vulnerabilities_rating/list?id=com.oz%3Aatm)
+[![Coverage Status](https://coveralls.io/repos/github/jaehoo/oz-ex-atm-desc/badge.svg?branch=master)](https://coveralls.io/github/jaehoo/oz-ex-atm-desc?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/5e86bf7ea8034fefbb9f845d01f955ba)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=Badge_Coverage) [![SonarCloud Coverage](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=com.oz%3Aatm) [![SonarCloud Bugs](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=com.oz%3Aatm) [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/badges/measure?key=com.oz:atm&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/vulnerabilities_rating/list?id=com.oz%3Aatm)
 
 # ATM Java Project
 

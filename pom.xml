@@ -43,7 +43,7 @@
         <!--  Plugins or utils  -->
 
         <commons-lang.version>2.6</commons-lang.version>
-        <jacoco.version>0.7.4.201502262128</jacoco.version>
+        <jacoco.version>0.8.0</jacoco.version>
         <javadoc.basedir>${project.basedir}/src/site/javadoc/</javadoc.basedir>
 
     </properties>

@@ -12,8 +12,8 @@ import java.util.Objects;
 /**
  * @author José Alberto Sánchez González
  * Twitter: <a href="https://twitter.com/jaehoox">@jaehoox</a>
- * <p>
- * @see <a href="https://www.infoworld.com/article/2073056/automate-gui-tests-for-swing-applications.html>Swing gui tests</a>
+ *
+ * @see <a href="https://www.infoworld.com/article/2073056/automate-gui-tests-for-swing-applications.html">Swing gui tests</a>
  * Created on 18/5/2022 20:52
  **/
 public class SwingTestUtils {

@@ -18,7 +18,7 @@ public class CajeroSwing extends javax.swing.JFrame {
 
     private static final Logger log = LoggerFactory.getLogger(CajeroSwing.class);
 
-    private Cajero cajero;
+    private transient Cajero cajero;
 
     /**
      * <p>Setter for the field <code>cajero</code>.</p>
@@ -164,7 +164,7 @@ public class CajeroSwing extends javax.swing.JFrame {
      *
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /*
          * Set the Nimbus look and feel
          */

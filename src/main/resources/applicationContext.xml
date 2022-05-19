@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/util
@@ -19,61 +19,43 @@
        http://www.springframework.org/schema/jee/spring-jee.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <!-- Spring Hibernate config -->
-
     <bean id="transactionManager"
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
 
-    <!-- Adm de transacciones-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-          p:configurationClass="org.hibernate.cfg.AnnotationConfiguration"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
           p:configLocation="classpath:hibernate.cfg.xml"
-          p:dataSource-ref="ds.cp.c3p0"/>
-
+          p:dataSource-ref="dataSource"/>
 
     <!-- Data Source -->
-
-    <!-- C3p0 DS  work with HSQLDB-->
-    <bean id="ds.cp.c3p0"
+    <!-- C3p0 with H2-->
+    <bean id="dataSource"
           lazy-init="true"
           class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"
           p:driverClass="org.h2.Driver"
           p:user="sa"
           p:password=""
-          p:jdbcUrl="jdbc:h2:mem:mymemdb;MODE=ORACLE;DB_CLOSE_DELAY=-1;LOCK_MODE=0;TRACE_LEVEL_FILE=0;TRACE_LEVEL_SYSTEM_OUT=0;DB_CLOSE_ON_EXIT=FALSE"
-          p:acquireIncrement="5"
+          p:jdbcUrl="jdbc:h2:mem:mydb;MODE=ORACLE;DB_CLOSE_DELAY=-1;LOCK_MODE=0;TRACE_LEVEL_FILE=0;TRACE_LEVEL_SYSTEM_OUT=0;DB_CLOSE_ON_EXIT=FALSE"
+          p:acquireIncrement="2"
           p:idleConnectionTestPeriod="60"
-          p:maxPoolSize="100"
-          p:minPoolSize="10"
-          p:maxStatements="50"/>
+          p:maxPoolSize="10"
+          p:minPoolSize="2"/>
 
-    <!-- Apache DS -->
-    <!--<bean id="ds.cp.dbcp"-->
-          <!--lazy-init="true"-->
-          <!--class="org.apache.commons.dbcp.BasicDataSource"-->
-          <!--p:driverClassName="org.h2.Driver"-->
-          <!--p:username="sa"-->
-          <!--p:password=""-->
-          <!--p:url="jdbc:h2:mem:mymemdb;MODE=ORACLE;DB_CLOSE_DELAY=-1;LOCK_MODE=0;TRACE_LEVEL_FILE=0;TRACE_LEVEL_SYSTEM_OUT=0"-->
-          <!--p:initialSize="5"-->
-          <!--p:maxActive="5"-->
-          <!--p:maxIdle="5"-->
-          <!--p:defaultAutoCommit="false"-->
-          <!--p:defaultTransactionIsolation="2"-->
-          <!--p:validationQuery="select 1"-->
-          <!--p:testOnBorrow="true"/>-->
+<!--    <jdbc:embedded-database id="dataSource" type="H2" />-->
+
+    <jdbc:initialize-database data-source="dataSource">
+        <jdbc:script location="classpath:db/sql/dataset.sql" />
+    </jdbc:initialize-database>
 
     <!--  DAO -->
 
     <bean name="absDao" class="com.oz.atm.model.dao.AbstractDao" p:sf-ref="sessionFactory"/>
     <bean parent="absDao" name="retirosDao" class="com.oz.atm.model.dao.RetirosImpl" />
     <bean parent="absDao" name="trasferenciasDao" class="com.oz.atm.model.dao.TransferenciasImpl" />
-
-
 
     <!-- Services -->
 
@@ -82,15 +64,9 @@
           p:retiros-ref="retirosDao"
           p:transferencias-ref="trasferenciasDao"/>
 
-
     <bean id="cajeroSwing"
           class="com.oz.atm.gui.CajeroSwing"
           p:cajero-ref="cajeroBancario"
             lazy-init="true"/>
-
-    <jdbc:embedded-database id="dataSource" type="H2">
-        <jdbc:script location="classpath:db/sql/dataset.sql" />
-        <!-- <jdbc:script location="classpath:db/sql/insert-data.sql" />-->
-    </jdbc:embedded-database>
 
 </beans>

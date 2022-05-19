@@ -5,17 +5,26 @@
 package com.oz.atm.gui;
 
 import com.oz.atm.service.Cajero;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
+ * <p>CajeroSwing class.</p>
  *
- * @author alberto
+ * @author Jaehoo
+ * @since 2.0.0
  */
 public class CajeroSwing extends javax.swing.JFrame {
 
+    private static final Logger log = LoggerFactory.getLogger(CajeroSwing.class);
+
     private Cajero cajero;
 
+    /**
+     * <p>Setter for the field <code>cajero</code>.</p>
+     *
+     * @param cajero a {@link com.oz.atm.service.Cajero} object.
+     */
     public void setCajero(Cajero cajero) {
         this.cajero = cajero;
     }
@@ -25,6 +34,7 @@ public class CajeroSwing extends javax.swing.JFrame {
      */
     public CajeroSwing() {
         initComponents();
+        setComponentNames();
     }
 
     /**
@@ -47,74 +57,62 @@ public class CajeroSwing extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Num. Cliente:");
+        jLabel1.setText("NUM CLIENTE:");
 
-        jLabel2.setText("Importe:");
+        jLabel2.setText("IMPORTE");
 
         famount.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
 
         jButton1.setText("Retiro");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         jButton2.setText("Transferencia");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jButton2.addActionListener(this::jButton2ActionPerformed);
 
         lresult.setText("RESULTADO!!");
 
         fclient.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("##"))));
-        fclient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fclientActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lresult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(fclient, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(famount, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(lresult, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fclient, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(famount))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
                     .addComponent(famount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fclient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(lresult, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -125,7 +123,7 @@ public class CajeroSwing extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -133,8 +131,8 @@ public class CajeroSwing extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+        log.info(evt.getActionCommand());
         lresult.setText("");
-
         Double amount=Double.parseDouble(famount.getText()) ;
         cajero.retirar( Integer.parseInt(fclient.getText()),amount );
         lresult.setText("Withdraw successfully for : "+ amount);
@@ -142,12 +140,8 @@ public class CajeroSwing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void fclientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fclientActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fclientActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        log.info(evt.getActionCommand());
         lresult.setText("");
 
         Double amount=Double.parseDouble(famount.getText()) ;
@@ -157,7 +151,17 @@ public class CajeroSwing extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void setComponentNames(){
+        this.jButton1.setName("jButton1");
+        this.jButton2.setName("jButton2");
+        this.famount.setName("famount");
+        this.fclient.setName("fclient");
+        this.lresult.setName("lresult");
+    }
+
     /**
+     * <p>main.</p>
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -177,13 +181,7 @@ public class CajeroSwing extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CajeroSwing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CajeroSwing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CajeroSwing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException |  InstantiationException |IllegalAccessException |javax.swing.UnsupportedLookAndFeelException  ex) {
             java.util.logging.Logger.getLogger(CajeroSwing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -191,12 +189,7 @@ public class CajeroSwing extends javax.swing.JFrame {
         /*
          * Create and display the form
          */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new CajeroSwing().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(()-> new CajeroSwing().setVisible(true));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField famount;

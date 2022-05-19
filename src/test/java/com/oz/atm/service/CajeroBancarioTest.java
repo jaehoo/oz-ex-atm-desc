@@ -2,16 +2,12 @@ package com.oz.atm.service;
 
 import com.oz.atm.util.AbstractTest;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
 public class CajeroBancarioTest extends AbstractTest {
-
-    public static final Logger LOG = LoggerFactory.getLogger(CajeroBancarioTest.class);
 
     @Resource(name="cajeroBancario")
     private Cajero cajero;

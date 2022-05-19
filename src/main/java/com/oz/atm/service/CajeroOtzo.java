@@ -1,7 +1,7 @@
 package com.oz.atm.service;
 
-import com.oz.atm.model.dao.Retiros;
-import com.oz.atm.model.dao.Transferencias;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,19 +9,21 @@ import com.oz.atm.model.dao.Transferencias;
  * Date: 20/02/13
  * Time: 10:39
  *
- * @author <a href="jaehoo@gmail.com">Alberto Sánchez</a>
- *         Contact me by:
- *         <ul><li>Twitter: @jaehoox</li><ul>
+ * @author Jaehoo
+ * @since 2.0.0
  */
 public class CajeroOtzo implements Cajero {
 
-    private Retiros retiros;
-    private Transferencias transferencias;
+    private static final Logger log = LoggerFactory.getLogger(CajeroOtzo.class);
 
-    public void retirar(Integer idCustomer, double amount){}
+    /** {@inheritDoc} */
+    public void retirar(Integer idCustomer, double amount){
+        log.info("Withdraw fail =( ");
+    }
 
+    /** {@inheritDoc} */
     @Override
     public void transferir(Integer idCustomer, double amount) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        log.info("Transfer fail =( ");
     }
 }

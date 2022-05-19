@@ -9,7 +9,7 @@
     <name>atm demo</name>
     <url>https://www.orbitalzero.com</url>
     <description>
-        This project is an example to show you some basic concepts of the Java development using the DAO pattern with Spring and Hiberante, including the test execution with JUnit.
+        This project is an example to show some basic concepts of the Java development using the DAO pattern with Spring and Hiberante, including the test execution with JUnit.
     </description>
 
     <properties>
@@ -29,7 +29,7 @@
 
         <!--  Loggers -->
         <slf4j.version>1.7.26</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.9</logback.version>
 
         <!-- Testing -->
         <junit.version>[4.13.1,)</junit.version>
@@ -51,7 +51,7 @@
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
         <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
-        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
         <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
@@ -143,7 +143,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Spirng Framework-->
+        <!-- Spring Framework-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -259,6 +259,12 @@
                             <execution>
                                 <id>post-unit-tests</id>
                                 <phase>test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <phase>verify</phase>
                                 <goals>
                                     <goal>report</goal>
                                 </goals>
@@ -403,13 +409,7 @@
                                     </goals>
                                 </execution>
                             </executions>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>org.apache.velocity</groupId>
-                                    <artifactId>velocity</artifactId>
-                                    <version>1.5</version>
-                                </dependency>
-                            </dependencies>
+
                         </plugin>
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>

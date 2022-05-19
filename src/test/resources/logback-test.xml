@@ -8,13 +8,6 @@
         </encoder>
     </appender>
 
-    <!--
-        Levels: TRACE, DEBUG, INFO, WARN, ERROR, ALL or OFF.
-        <logger name=".*" level="debug"/>
-        -->
-
-    <!-- <logger level="debug" name="com.oz.atm" />-->
-
     <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>

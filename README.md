@@ -1,48 +1,127 @@
-[![Build Status](https://travis-ci.org/jaehoo/oz-ex-atm-desc.svg?branch=master)](https://travis-ci.org/jaehoo/oz-ex-atm-desc) [![alert_status](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.oz:atm) ![sqale_rating](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=sqale_rating) ![reliability_rating](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=reliability_rating) ![security_rating](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=security_rating)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f744713b2a774b7088a5acfc4f39cf5a)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=badger) [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/5e86bf7ea8034fefbb9f845d01f955ba)](https://www.codacy.com/app/jaehoo/oz-ex-atm-desc?utm_source=github.com&utm_medium=referral&utm_content=jaehoo/oz-ex-atm-desc&utm_campaign=Badge_Coverage) [![Coverage Status](https://coveralls.io/repos/github/jaehoo/oz-ex-atm-desc/badge.svg?branch=master)](https://coveralls.io/github/jaehoo/oz-ex-atm-desc?branch=master) [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=coverage)](https://sonarcloud.io/component_measures/metric/coverage/list?id=com.oz%3Aatm) [![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=bugs)](https://sonarcloud.io/component_measures/metric/reliability_rating/list?id=com.oz%3Aatm) [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=com.oz:atm&metric=vulnerabilities)](https://sonarcloud.io/component_measures/metric/vulnerabilities_rating/list?id=com.oz%3Aatm)
-
+![CI](https://github.com/jaehoo/oz-ex-atm-desc/actions/workflows/build.yml/badge.svg) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=jaehoo_oz-ex-atm-desc&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=jaehoo_oz-ex-atm-desc)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jaehoo_oz-ex-atm-desc&metric=coverage)](https://sonarcloud.io/summary/new_code?id=jaehoo_oz-ex-atm-desc) 
 
 # ATM Java Project
 
-### Description
-This project is an example to show you some basic concepts of the java development, how to use DAO pattern using Spring and hiberante and testing with JUnit. The principal topics are:
+This project is an example to show you some basic concepts of the Java development using the DAO pattern with Spring and Hiberante, including the test execution with JUnit. The main topics to cover are:
 
- - IoC (Inversion Of Control)
- - High Cohesion
- - Low Coupling
- - Polymorphism
+- IoC (Inversion Of Control)
+- High Cohesion
+- Low Coupling
+- Polymorphism
 
-And this includes the JaCoCo test Report, aditionally the project is configured to use cloud services with Travis CI for integration and Coveralls for coverage reports.
 
-## Project requirements:
+Also, the project has been configured to execute some useful plugins for development, like:
 
-- Java 1.8
-- Apache Maven > 3.0
+- Project versioning (semantic versioning)
+- Code coverage with Jacoco
+- Maven Site documentation
+- Javadoc generation
+- Junit tests execution
+- Creating a Database in memory with H2
 
-**What we're to build?**
+**What we're going to build?**
 
-A simple Java application with swing gui, if you want to read full description you can visit my [Personal Blog](https://jaehoo.wordpress.com/2013/06/20/oz-ejemplo-cajero-atm/)
+We're going build a Java application to simulate an ATM functionality with two operations (withdraw and transfers).
 
-But in summary we're build an aplication to simulate ATM funcionality with two operations (withdraw and transfers):
+If you need more details about this project you can take a look in [this entry in my blog](https://jaehoo.wordpress.com/2013/06/20/oz-ejemplo-cajero-atm/), there is a guide with the step by step explaining the creation of the classes.
 
-![use case](https://lh5.googleusercontent.com/-jfHXGVs5r_A/UIRiCG0EH8I/AAAAAAAACrA/mf3pD3spXdE/s400/Diagramadecasodeuso.png)
+For the transactional DB operations it is needed create two tables:
 
-The database:
-![db-schema](docs/db-schema.png)
+![db-schema](src/site/resources/images/db_diagram.png)
 
-Credits
--------
+The frontend is simple a Swing gui application (developed in Netbeans):
 
-![thoughtbot](https://lh6.googleusercontent.com/-gXFiyKSSZ4E/UewkL6Eez8I/AAAAAAAADpg/Phifd0oafkc/s288/OZ%2520logo.png)
+![app](src/site/resources/images/sketch.png)
 
-This project is maintained by [Orbital Zero, inc](http://www.orbitalzero.com/community)
-and people like you :) . Thank you!
+## Requirements
+
+- Java > 1.8
+- Apache Maven > 3.6
+
+
+## Installation
+
+### Testing
+
+```sh
+# Unit tests
+mvn test -P jacoco
+
+# Unit tests and integration tests 
+mvn test integration-test -P jacoco,it-test
+
+# Only integration tests
+mvn integration-test -P jacoco,it-test -DskipUnitTests=true
+```
+
+### Build
+
+To build the artifacts execute the maven goals at the top project folder, add the argument `-DskipTests=true` to avoid unit tests:
+
+```sh
+# Unit tests with build
+mvn verify -P jacoco
+
+# make artifacts skipping unit tests
+mvn clean package -DskipTests=true
+
+# Generate java doc main sources
+mvn javadoc:javadoc -P documenter -Dsourcepath=src/main/java
+
+# Generate javadoc from test sources 
+mvn javadoc:test-javadoc -P documenter -Dsourcepath=src/test/java
+
+# make site documents
+mvn site -P documenter,site-readme
+```
+
+## Release
+
+### Release to SCM repository
+
+Promote changes into source code repository to publish a tagged release of the project, use one of the next commands according that you need to execute. Please, note that it will do some changes in the repository. 
+
+```sh
+# clean release
+mvn release:clean -P scm-release
+
+#update project versions
+mvn release:update-versions P scm-release
+
+# Simulation mode 
+mvn release:prepare -P scm-release -DskipTests  \
+-Darguments="-DskipTests -DpushChanges=false -DdryRun=true -DdeveloperConnectionUrl=scm:git:${git.repo.url}"
+
+# Interactive mode
+mvn release:prepare -P scm-release -DskipTests  \
+-Darguments="-DskipTests -DdryRun=false -DdeveloperConnectionUrl=scm:git:${git.repo.url}"
+
+# Non interactive
+mvn release:prepare -P scm-release \
+-DdryRun=false \
+-DdevelopmentVersion=1.0.5-SNAPSHOT \
+-DreleaseVersion=1.0.5 \
+-Dtag=v1.0.5 \
+-DdeveloperConnectionUrl="scm:git:${git.repo.url}"
+
+``` 
+
+---
+<p align="center">
+  <img src="src/site/resources/images/company-logo-min.png" style=" height: 90px; border-bottom:1px none #ebb349; padding:0 10px 6px 10px ;"/>
+</p>
+
 
 License
 -------
 
-**This project** is copyright 2018 by Jaehoo (Alberto Sánchez) and Orbital Zero,inc. It is free software, and may be redistributed under the terms specified in the `LICENSE` file.
+This project is copyright by **Orbital Zero**, it is free software and may be redistributed under the terms specified in the `LICENSE` file.
 
-The names and logos for this sample code are trademarks of their respective owners, which are in no way associated or affiliated with Orbital Zero.
-Product names and logos are used solely for the purpose to show specific examples of software development, not for comercial use. Use of these names does not imply any co-operation or endorsement.
+The names and logos for this sample code are trademarks of their respective owners, which are in no way associated or affiliated with Orbital Zero. Product names and logos are used solely for the purpose to show specific examples of software development, not for commercial use. Use of these names does not imply any co-operation or endorsement.
+
+
+Credits
+-------
+This project is maintained by [Orbital Zero, inc](http://www.orbitalzero.com/community)
+and people like you :) . Thank you!

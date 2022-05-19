@@ -1,49 +1,47 @@
 package com.oz.atm.util;
 
 import java.util.List;
-import org.hibernate.HibernateException;
+
+import com.oz.atm.model.persistence.Customer;
 import org.hibernate.SessionFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.*;
+import javax.annotation.Resource;
 
 /**
  * Created by Orbital Zero.
  * Date: 23/10/12
  * Time: 12:34 PM
- * Author: Lic. José Alberto Sánchez González
- * Twitter: @jaehoox
- * mail: <a href="mailto:jaehoo@gmail.com">jaehoo@gmail.com</a>
  */
 public class LoggerTest extends AbstractTest {
 
     private static final Logger logger= LoggerFactory.getLogger(LoggerTest.class);
 
+    @Resource(name = "sessionFactory")
+    private SessionFactory sf;
+
     @Test
+    @Ignore("for dummy test logger")
     public void testLogger(){
 
         logger.info("----------- INFO");
         logger.debug("----------- DEBUG");
         logger.error("----------- ERROR");
-        
-        // Test Spring and Hibernate Config
-        //ClassPathXmlApplicationContext context= new ClassPathXmlApplicationContext("applicationContext.xml");
 
     }
 
     @Test
-    @Transactional
+    @Transactional(readOnly = true)
     public void testConfig(){
 
-        SessionFactory sf= (SessionFactory) applicationContext.getBean("sessionFactory");
+        List<Customer> result = sf.getCurrentSession()
+                .createNativeQuery("SELECT * FROM CUSTOMER",Customer.class).list();
+        assertEquals(2,  result.size());
 
-        List result = sf.getCurrentSession().createSQLQuery("select * from CUSTOMER").list();
-        
-        logger.info("Resultado:{}", result);
-        
-        
     }
 
 

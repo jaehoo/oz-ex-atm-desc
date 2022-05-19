@@ -12,9 +12,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
  * Created by Orbital Zero.
  * Date: 23/10/12
  * Time: 12:31 PM
- * Author: Lic. José Alberto Sánchez González
- * Twitter: @jaehoox
- * mail: <a href="mailto:jaehoo@gmail.com">jaehoo@gmail.com</a>
+
  */
 @ContextConfiguration(locations = { "classpath:applicationContext.xml"})
 @TestExecutionListeners({TransactionalTestExecutionListener.class})

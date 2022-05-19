@@ -6,15 +6,15 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
 
     <bannerLeft>
-        <name>OZ Messages library</name>
+        <name>${project.name}</name>
         <src>images/company-logo-min.png</src>
-        <href>http://www.orbitalzero.com</href>
+        <href>${company.website}</href>
     </bannerLeft>
 
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
-        <version>1.7</version>
+        <version>1.2.1</version>
     </skin>
 
     <custom>
@@ -26,22 +26,26 @@
 
 
     <body>
+
+<!--        <menu name="Overview">-->
+<!--            <item name="Introduction" href="readme.html"/>-->
+<!--        </menu>-->
+
         <links>
             <item name="${company.name}" href="${company.website}"/>
         </links>
-
        <!-- <menu name="Regular Web Site">
             <item name="APT Format" href="format.html"/>
             <item name="Xdoc Example" href="xdoc.html"/>
             <item name="FAQ" href="faq.html"/>
         </menu>-->
 
-        <menu ref="parent" inherit="top"/>
+<!--        <menu ref="parent" inherit="top"/>-->
         <menu ref="modules" inherit="top"/>
         <menu ref="reports" inherit="top"/>
 
-        <menu name="Links">
-            <item name="Wiki page" href="http://en.wikipedia.org/wiki/My_Science_Project"/>
+        <menu name="Other">
+            <item name="Project guide" href="https://jaehoo.wordpress.com/2013/06/20/oz-ejemplo-cajero-atm/"/>
         </menu>
     </body>
 </project>

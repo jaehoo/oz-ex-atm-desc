@@ -1,3 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS DEMO;
+USE DEMO;
+
 create sequence SQ_CUSTOMER;
 create sequence SQ_ACCOUNT;
 
@@ -10,7 +13,7 @@ create table ACCOUNT (
 
   create table CUSTOMER (
       id_customer number(10,0) not null,
-      name varchar2(255 char),
+      name varchar2(255),
       primary key (id_customer)
   );;
 
@@ -20,5 +23,5 @@ create table ACCOUNT (
       references CUSTOMER;
 
 
-
 INSERT INTO CUSTOMER(id_customer,name) VALUES(1,'Jaehoo');
+INSERT INTO CUSTOMER(id_customer,name) VALUES(2,'John Doe');

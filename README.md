@@ -22,7 +22,7 @@ Also, the project has been configured to execute some useful plugins for develop
 
 **What we're going to build?**
 
-We're going build a Java application to simulate an ATM functionality with two operations (withdraw and transfers).
+A simple Java application to simulate an ATM functionality with two operations (withdraw and transfers).
 
 If you need more details about this project you can take a look in [this entry in my blog](https://jaehoo.wordpress.com/2013/06/20/oz-ejemplo-cajero-atm/), there is a guide with the step by step explaining the creation of the classes.
 
@@ -63,7 +63,7 @@ To build the artifacts execute the maven goals at the top project folder, add th
 # Unit tests with build
 mvn verify -P jacoco
 
-# make artifacts skipping unit tests
+# Make artifacts skipping unit tests
 mvn clean package -DskipTests=true
 
 # Generate java doc main sources
@@ -72,8 +72,18 @@ mvn javadoc:javadoc -P documenter -Dsourcepath=src/main/java
 # Generate javadoc from test sources 
 mvn javadoc:test-javadoc -P documenter -Dsourcepath=src/test/java
 
-# make site documents
-mvn site -P documenter,site-readme
+# Make site documents
+mvn site -P documenter,site-readme,spotbugs
+```
+
+### Code inspection
+
+```sh
+# Execute analyse
+mvn spotbugs:spotbugs -P spotbugs
+
+# Show report analyse in a gui
+mvn spotbugs:gui -P spotbugs
 ```
 
 ## Release
@@ -124,4 +134,4 @@ The names and logos for this sample code are trademarks of their respective owne
 Credits
 -------
 This project is maintained by [Orbital Zero, inc](http://www.orbitalzero.com/community)
-and people like you :) . Thank you!
+and people like you =). Thank you!

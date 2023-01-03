@@ -3,7 +3,7 @@
 
     <groupId>com.oz</groupId>
     <artifactId>atm</artifactId>
-    <version>2.0.1-SNAPSHOT</version>
+    <version>2.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>atm demo</name>
@@ -35,18 +35,17 @@
         <junit.version>[4.13.1,)</junit.version>
         <c3po.version>0.9.1.2</c3po.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
-        <jacoco.version>0.7.5.201505241946</jacoco.version>
 
         <!-- Spring, Hibernate -->
         <spring.framework.version>5.2.21.RELEASE</spring.framework.version>
         <hibernate.version>5.5.4.Final</hibernate.version>
 
         <!-- JDBC Drivers -->
-        <hsqldb.version>2.2.8</hsqldb.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
 
         <!--  Plugins or utils  -->
         <commons-lang.version>2.6</commons-lang.version>
-        <jacoco.version>0.8.0</jacoco.version>
+        <jacoco.version>0.8.7</jacoco.version>
 
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
@@ -505,9 +504,33 @@
                             </reportSet>
                         </reportSets>
                     </plugin>
+
                 </plugins>
             </reporting>
 
+        </profile>
+
+        <!-- Security analyse with spotbugs -->
+        <profile>
+            <id>spotbugs</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <version>4.7.3.0</version>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <version>4.7.3.0</version>
+                    </plugin>
+                </plugins>
+            </reporting>
         </profile>
     </profiles>
 </project>

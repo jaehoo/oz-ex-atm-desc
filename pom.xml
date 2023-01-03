@@ -42,7 +42,7 @@
         <hibernate.version>5.5.4.Final</hibernate.version>
 
         <!-- JDBC Drivers -->
-        <hsqldb.version>2.2.8</hsqldb.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
 
         <!--  Plugins or utils  -->
         <commons-lang.version>2.6</commons-lang.version>
@@ -505,9 +505,33 @@
                             </reportSet>
                         </reportSets>
                     </plugin>
+
                 </plugins>
             </reporting>
 
+        </profile>
+
+        <!-- Security analyse with spotbugs -->
+        <profile>
+            <id>spotbugs</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <version>4.7.3.0</version>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs-maven-plugin</artifactId>
+                        <version>4.7.3.0</version>
+                    </plugin>
+                </plugins>
+            </reporting>
         </profile>
     </profiles>
 </project>

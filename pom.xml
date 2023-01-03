@@ -35,7 +35,6 @@
         <junit.version>[4.13.1,)</junit.version>
         <c3po.version>0.9.1.2</c3po.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
-        <jacoco.version>0.7.5.201505241946</jacoco.version>
 
         <!-- Spring, Hibernate -->
         <spring.framework.version>5.2.21.RELEASE</spring.framework.version>
@@ -46,7 +45,7 @@
 
         <!--  Plugins or utils  -->
         <commons-lang.version>2.6</commons-lang.version>
-        <jacoco.version>0.8.0</jacoco.version>
+        <jacoco.version>0.8.7</jacoco.version>
 
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-javadoc-plugin.version>3.2.0</maven-javadoc-plugin.version>
